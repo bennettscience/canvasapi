@@ -1,4 +1,4 @@
-# This is a string
+# Testing pre-commit
 from typing import Union, Optional, List, TYPE_CHECKING
 import warnings
 
