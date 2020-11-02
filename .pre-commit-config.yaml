@@ -1,6 +1,36 @@
 repos:
-  - repo: https://github.com/ambv/black
-    rev: stable
-    hooks:
-    - id: black
-      language_version: python3.7
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v2.4.0
+      hooks:
+          - id: flake8
+    - repo: https://github.com/ambv/black
+      rev: stable
+      hooks:
+          - id: black
+            language_version: python3.7
+    - repo: local
+      hooks:
+          - id: unittest
+            name: unittest
+            language: system
+            entry: python -m unittest discover ./tests
+            types: [python]
+            pass_filenames: true
+          - id: alphabetic
+            name: alphabetic
+            language: system
+            entry: python ./scripts/alphabetic.py
+            types: [python]
+            pass_filenames: true
+          - id: kwargs
+            name: kwargs
+            language: system
+            entry: python ./scripts/find_missing_kwargs.py
+            types: [python]
+            pass_filenames: true
+          - id: markdown
+            name: markdown
+            language: system
+            entry: mdl . .github
+            types: [markdown]
+            pass_filenames: true
