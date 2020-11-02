@@ -1,3 +1,4 @@
+# this should fail
 from typing import Union, Optional, List, TYPE_CHECKING
 import warnings
 
