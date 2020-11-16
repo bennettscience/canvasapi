@@ -7,53 +7,27 @@ and happy.
 
 ## Table of Contents
 
-<<<<<<< HEAD
--   [How can I contribute?](#how-can-i-contribute)
-    -   [Bug reports](#bug-reports)
-    -   [Resolving issues](#resolving-issues)
-    -   [Making your first contribution](#making-your-first-contribution)
-        -   [Setting up the environment](#setting-up-the-environment)
-        -   [Writing tests](#writing-tests)
-            -   [API Coverage Tests](#api-coverage-tests)
-            -   [Engine tests](#engine-tests)
-        -   [Running tests / coverage reports](#running-tests--coverage-reports)
-        -   [Making a Pull Request](#making-a-pull-request)
--   [Code style guidelines](#code-style-guidelines)
-    -   [Foolish consistency](#foolish-consistency)
-    -   [Method docstrings](#method-docstrings)
-        -   [Descriptions](#descriptions)
-        -   [Links to related API endpoints](#links-to-related-api-endpoints)
-        -   [Parameters](#parameters)
-        -   [Returns](#returns)
-        -   [Docstring examples](#docstring-examples)
-    -   [Type hinting](#type-hinting)
-        -   [Type hint fomatting](#type-hint-formatting)
-        -   [Type hints in Classes](#type-hints-in-classes)
-        -   [Python 3.6](#python-3.6-type-hints)
-        -   [Python 3.7+](#python-3.7+-type-hints)
-=======
-* [Contributing to CanvasAPI](#contributing-to-canvasapi)
-    * [Table of Contents](#table-of-contents)
-    * [How can I contribute?](#how-can-i-contribute)
-        * [Bug reports](#bug-reports)
-        * [Resolving issues](#resolving-issues)
-        * [Making your first contribution](#making-your-first-contribution)
-            * [Setting up the environment](#setting-up-the-environment)
-            * [Writing tests](#writing-tests)
-                * [API coverage tests](#api-coverage-tests)
-                * [Engine tests](#engine-tests)
-            * [Running tests / coverage reports](#running-tests--coverage-reports)
-            * [Making a pull request](#making-a-pull-request)
-    * [Code style guidelines](#code-style-guidelines)
-        * [Running code style checks](#running-code-style-checks)
-        * [Foolish consistency](#foolish-consistency)
-        * [Method docstrings](#method-docstrings)
-            * [Descriptions](#descriptions)
-            * [Links to related API endpoints](#links-to-related-api-endpoints)
-            * [Parameters](#parameters)
-            * [Returns](#returns)
-            * [Docstring Examples](#docstring-examples)
->>>>>>> 463174ed5339acf069830e848b08ed29d8797e56
+-   [Contributing to CanvasAPI](#contributing-to-canvasapi)
+    -   [Table of Contents](#table-of-contents)
+    -   [How can I contribute?](#how-can-i-contribute)
+        -   [Bug reports](#bug-reports)
+        -   [Resolving issues](#resolving-issues)
+        -   [Making your first contribution](#making-your-first-contribution)
+            -   [Setting up the environment](#setting-up-the-environment)
+            -   [Writing tests](#writing-tests)
+                -   [API coverage tests](#api-coverage-tests)
+                -   [Engine tests](#engine-tests)
+            -   [Running tests / coverage reports](#running-tests--coverage-reports)
+            -   [Making a pull request](#making-a-pull-request)
+    -   [Code style guidelines](#code-style-guidelines)
+        -   [Running code style checks](#running-code-style-checks)
+        -   [Foolish consistency](#foolish-consistency)
+        -   [Method docstrings](#method-docstrings)
+            -   [Descriptions](#descriptions)
+            -   [Links to related API endpoints](#links-to-related-api-endpoints)
+            -   [Parameters](#parameters)
+            -   [Returns](#returns)
+            -   [Docstring Examples](#docstring-examples)
 
 ## How can I contribute?
 
@@ -73,81 +47,58 @@ Here are a few things worth mentioning when making a report:
 
 ### Resolving issues
 
-<<<<<<< HEAD
 We welcome pull requests for bug fixes and new features! Feel free to browse our
 open, unassigned issues and assign yourself to them. You can also filter by
 labels:
 
--   [simple](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Asimple)
-    -- easier issues to start working on; great for getting familiar with the
-    codebase.
--   [api coverage](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Aapi-coverage)
-    -- covering new endpoints or updating existing ones.
--   [enhancement](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Aenhancement)
-    -- updates to the engine to improve performance or add new functionality.
--   [major](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Amajor)
-    -- difficult or major changes or additions that require familiarity with the
+-   [api coverage](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Aapi-coverage):
+    covering new endpoints or updating existing ones.
+-   [backstage](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Abackstage):
+    issues affecting the repository or project internals rather than user-facing
+    features.
+-   [bug](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Abug):
+    happy little code accidents.
+-   [canvas](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Acanvas-bug):
+    confirmed to be an issue with the Canvas LMS rather than the CanvasAPI
     library.
--   [bug](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Abug)
-    -- happy little code accidents.
--   [fixed-in-develop](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Afixed-in-develop)
-    -- issues that have been resolved but the changes are not in the latest
-    release yet.
--   [canvas-bug](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Acanvas-bug)
-    -- confirmed to be an issue with the Canvas LMS rather than the CanvasAPI
-    library.
--   [help wanted](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3A"help%20wanted")
-    -- we need _your_ help to figure these out!
--   [documentation](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Adocumentation)
-    -- issues relating to Documentation. Specifically, any of the `.md` files or
+-   [documentation](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Adocumentation):
+    issues relating to Documentation. Specifically, any of the `.md` files or
     our [class reference docs](http://canvasapi.readthedocs.io/en/latest/).
+-   [enhancement](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Aenhancement):
+    updates to the engine to improve performance or add new functionality.
+-   [help wanted](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3A"help%20wanted"):
+    we need _your_ help to figure these out!
+-   [major](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Amajor):
+    difficult or major changes or additions that require familiarity with the
+    library.
+-   [question](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Aquestion):
+    issues that aren't reporting functionality or requesting improvement but
+    requesting clarification on existing behavior
+-   [simple](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Asimple):
+    easier issues to start working on; great for getting familiar with the
+    codebase.
 
 Once you've found an issue you're interested in tackling, take a look at our
 [first contribution tutorial](#making-your-first-contribution) for information
 on our pull request policy.
-=======
-We welcome pull requests for bug fixes and new features! Feel free to browse our open, unassigned issues and assign yourself to them. You can also filter by labels:
-
-* [api coverage](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Aapi-coverage): covering new endpoints or updating existing ones.
-* [backstage](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Abackstage): issues affecting the repository or project internals rather than user-facing features.
-* [bug](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Abug): happy little code accidents.
-* [canvas](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Acanvas-bug): confirmed to be an issue with the Canvas LMS rather than the CanvasAPI library.
-* [documentation](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Adocumentation): issues relating to Documentation. Specifically, any of the `.md` files or our [class reference docs](http://canvasapi.readthedocs.io/en/latest/).
-* [enhancement](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Aenhancement): updates to the engine to improve performance or add new functionality.
-* [help wanted](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3A"help%20wanted"): we need *your* help to figure these out!
-* [major](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Amajor): difficult or major changes or additions that require familiarity with the library.
-* [question](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Aquestion): issues that aren't reporting functionality or requesting improvement but requesting clarification on existing behavior
-* [simple](https://github.com/ucfopen/canvasapi/issues?q=sort%3Aid_desc-desc+is%3Aopen+label%3Asimple): easier issues to start working on; great for getting familiar with the codebase.
-
-Once you've found an issue you're interested in tackling, take a look at our [first contribution tutorial](#making-your-first-contribution) for information on our pull request policy.
->>>>>>> 463174ed5339acf069830e848b08ed29d8797e56
 
 ### Making your first contribution
 
 #### Setting up the environment
 
-<<<<<<< HEAD
 Now that you've selected an issue to work on, you'll need to set up an
-environment for writing code. We'll assume you already have pip, virtualenv, and
-git installed and are using a terminal. If not, please set those up before
-continuing.
+environment for writing code. We'll assume you already have Python 3 (pip /
+venv) and git installed and are using a terminal. If not, please set those up
+before continuing.
 
-1. Clone our repository by executing
-   `git clone git@github.com:ucfopen/canvasapi.git`
+1. Fork CanvasAPI on GitHub
+   ([see the docs here](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/fork-a-repo))
 2. Checkout (`git checkout develop`) and then pull the latest commit from the
-   develop branch: `git pull origin develop`
+   develop branch: `git pull upstream develop`
 3. Create a new branch with the format **issue/[issue_number]-[issue-title]**:
    `git checkout -b issue/1-test-issue-for-documentation`
-4. Set up a new virtual environment ( `virtualenv env` ) and activate it
-   (`source env/bin/activate`)
-=======
-Now that you've selected an issue to work on, you'll need to set up an environment for writing code. We'll assume you already have Python 3 (pip / venv) and git installed and are using a terminal. If not, please set those up before continuing.
-
-1. Fork CanvasAPI on GitHub ([see the docs here](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/fork-a-repo))
-2. Checkout (`git checkout develop`) and then pull the latest commit from the develop branch: `git pull upstream develop`
-3. Create a new branch with the format **issue/[issue_number]-[issue-title]**: `git checkout -b issue/1-test-issue-for-documentation`
-4. Set up a new virtual environment ( `python3 -m venv ~/.virtualenvs/canvasapi` ) and activate it
->>>>>>> 463174ed5339acf069830e848b08ed29d8797e56
+4. Set up a new virtual environment ( `python3 -m venv ~/.virtualenvs/canvasapi`
+   ) and activate it
 5. Install the required dependencies with `pip install -r dev_requirements.txt`
 
 From here, you can go about working on your issue you normally would. Please
@@ -346,16 +297,20 @@ specification as much as possible. In short, that means:
 
 ### Running code style checks
 
-The following tools can help you check your code for style correctness. We run these tools in our CI pipeline, so running them locally is a great way to speed up acceptance of your pull requests.
+The following tools can help you check your code for style correctness. We run
+these tools in our CI pipeline, so running them locally is a great way to speed
+up acceptance of your pull requests.
 
-You can use [pre-commit](https://pre-commit.com/) to force each check to run before you create a commit locally:
+You can use [pre-commit](https://pre-commit.com/) to force each check to run
+before you create a commit locally:
 
 ```sh
 pip install pre-commit
 pre-commit install
 ```
 
-Alternatively, each step can be run manually one-by-one, or all at once executing `./scripts/run_tests.sh`.
+Alternatively, each step can be run manually one-by-one, or all at once
+executing `./scripts/run_tests.sh`.
 
 We use `flake8` for linting:
 
@@ -377,7 +332,8 @@ script to confirm order:
 python scripts/alphabetic.py
 ```
 
-All endpoint methods should accept arbitrary keyword arguments to enable parameter pass-through to Canvas:
+All endpoint methods should accept arbitrary keyword arguments to enable
+parameter pass-through to Canvas:
 
 ```sh
 python scripts/find_missing_kwargs.py
