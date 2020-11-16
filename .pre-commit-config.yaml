@@ -28,9 +28,9 @@ repos:
             entry: python ./scripts/find_missing_kwargs.py
             types: [python]
             pass_filenames: true
-          - id: markdown
-            name: markdown
-            language: system
-            entry: mdl . .github
-            types: [markdown]
-            pass_filenames: true
+          # - id: markdown
+          #   name: markdown
+          #   language: system
+          #   entry: mdl . .github
+          #   types: [markdown]
+          #   pass_filenames: true
