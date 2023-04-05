@@ -22,7 +22,9 @@ from canvasapi.gradebook_history import (
 from canvasapi.grading_period import GradingPeriod
 from canvasapi.grading_standard import GradingStandard
 from canvasapi.license import License
+from canvasapi.live_assessment import LiveAssessment
 from canvasapi.module import Module
+from canvasapi.outcome import Outcome
 from canvasapi.outcome_import import OutcomeImport
 from canvasapi.page import Page
 from canvasapi.paginated_list import PaginatedList
@@ -423,6 +425,41 @@ class Course(CanvasObject):
         late_policy_json = response.json()
 
         return LatePolicy(self._requester, late_policy_json["late_policy"])
+
+    def create_live_assessment(self, title, outcome):
+        """
+        Create a live assessment in the course. If the key for the live 
+        assessment exists, it will be updated.
+
+        :calls: `POST /api/v1/courses/:course_id/live_assessments \
+        <https://canvas.instructure.com/doc/api/live_assessments.html#method.live_assessments/assessments.create>`_
+
+        :param: title: Title for the live assessment
+        :type title: str
+        :param: outcome: Outcome linked within the course
+        :type outcome: int, str or :class: `canvasapi.outcome.Outcome`
+        """
+        from datetime import datetime
+
+        outcome_id = obj_or_id(outcome, "outcome", (Outcome,))
+
+        # The assessment needs a key. Canvas convention is to prepend the live
+        # assessment with the date, so we build the key here first.
+
+        formatted_date = datetime.now().strftime("%Y-%m-%d")
+        key = "{}-outcome-{}-canvasapi".format(formatted_date, outcome_id)
+
+        assessments_list = [
+            {"key": key, "title": title, "links": {"outcome": str(outcome_id)}}
+        ]
+
+        response = self._requester.request(
+            "POST",
+            "courses/{}/live_assessments".format(self.id),
+            _kwargs=combine_kwargs(assessment=assessments_list),
+        )
+
+        return LiveAssessment(self._requester, response.json()["assessments"][0])
 
     def create_module(self, module, **kwargs):
         """
@@ -1609,6 +1646,22 @@ class Course(CanvasObject):
             "courses/{}/content_licenses".format(self.id),
             _kwargs=combine_kwargs(**kwargs),
         )
+
+    def get_live_assessments(self, **kwargs):
+        """
+        Return a list of live assessments
+
+        :calls: `GET /api/v1/courses/:course_id/live_assessments \
+        <https://canvas.instructure.com/doc/api/live_assessments.html#method.live_assessments/assessments.index>`_
+
+        :rtype: dict
+        """
+        response = self._requester.request(
+            "GET",
+            "courses/{}/live_assessments".format(self.id),
+            _kwargs=combine_kwargs(**kwargs),
+        )
+        return response.json()
 
     def get_migration_systems(self, **kwargs):
         """
