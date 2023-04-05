@@ -33,6 +33,7 @@ from canvasapi.grading_period import GradingPeriod
 from canvasapi.grading_standard import GradingStandard
 from canvasapi.group import Group, GroupCategory
 from canvasapi.license import License
+from canvasapi.live_assessment import LiveAssessment
 from canvasapi.module import Module
 from canvasapi.outcome import OutcomeGroup, OutcomeLink, OutcomeResult
 from canvasapi.outcome_import import OutcomeImport
@@ -1542,7 +1543,6 @@ class TestCourse(unittest.TestCase):
         self.assertEqual(outcome_import.data["import_type"], "instructure_csv")
 
     def test_import_outcome_id(self, m):
-
         register_uris({"course": ["import_outcome"]}, m)
 
         outcome_import = self.course.import_outcome(1)
@@ -1787,6 +1787,24 @@ class TestCourse(unittest.TestCase):
         self.assertEqual(len(root_folder_list), 1)
         self.assertIsInstance(root_folder_list[0], Folder)
         self.assertEqual("course_files", root_folder_list[0].name)
+
+    # create_live_assessment()
+    def test_create_live_assessment(self, m):
+        register_uris({"course": ["create_live_assessment"]}, m)
+
+        title = "New Live Assessment"
+        outcome_id = 1
+
+        live_assessment = self.course.create_live_assessment(title, outcome_id)
+        self.assertIsInstance(live_assessment, LiveAssessment)
+
+    # get_live_assessments()
+    def test_get_live_assessments(self, m):
+        register_uris({"course": ["get_live_assessments"]}, m)
+
+        response = self.course.get_live_assessments()
+        self.assertIsInstance(response, dict)
+        self.assertTrue("assessments" in response)
 
 
 @requests_mock.Mocker()

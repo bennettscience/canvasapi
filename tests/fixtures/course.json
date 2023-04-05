@@ -98,6 +98,20 @@
 		},
 		"status_code": 200
 	},
+	"create_live_assessment": {
+		"method": "POST",
+		"endpoint": "courses/1/live_assessments",
+		"data": {
+			"assessments": [
+				{
+					"id":"1",
+					"key":"2023-04-05-outcome-1-canvasapi",
+					"title":"canvasapi Live Assessment"
+				}
+			]
+		},
+		"status_code": 200
+	},
 	"delete": {
 		"method": "DELETE",
 		"endpoint": "courses/1",
@@ -2316,7 +2330,36 @@
 		],
 		"status_code": 200
 	},
-    "resolve_path": {
+	"get_live_assessments": {
+		"method": "GET",
+		"endpoint": "courses/1/live_assessments",
+		"data": {
+			"links": {
+				"results": "https://www.example.com/api/v1/courses/1/live_assessments/{assessments.id}/results"
+			},
+			"assessments":[
+				{
+					"id":"1",
+					"key":"2023-04-05-outcome-1-canvasapi",
+					"title":"canvasapi Live Assessment"
+				}
+			],
+			"meta": {
+					"pagination": {
+							"per_page":10,
+							"next":"https://www.example.com/api/v1/courses/1/live_assessments?page=2&per_page=10",
+							"last":"https://www.example.com/api/v1/courses/1/live_assessments?page=7&per_page=10",
+							"current":"https://www.example.com/api/v1/courses/1/live_assessments?page=1&per_page=10",
+							"first":"https://www.example.com/api/v1/courses/1/live_assessments?page=1&per_page=10",
+							"page":1,
+							"template":"https://www.example.com/api/v1/courses/1/live_assessments?page={page}&per_page=10",
+							"count":65,
+							"page_count":7
+						}
+				}
+			}
+	},
+  "resolve_path": {
 		"method": "GET",
 		"endpoint": "courses/1/folders/by_path/Folder_Level_1/Folder_Level_2/Folder_Level_3",
 		"data": [
