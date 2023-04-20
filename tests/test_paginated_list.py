@@ -5,7 +5,8 @@ import requests_mock
 from canvasapi import Canvas
 from canvasapi.enrollment_term import EnrollmentTerm
 from canvasapi.paginated_list import PaginatedList
-from canvasapi.user import User
+from canvasapi.live_assessment import LiveAssessment
+from canvasapi.user import UserDisplay
 from tests import settings
 from tests.util import register_uris
 
@@ -202,3 +203,15 @@ class TestPaginatedList(unittest.TestCase):
 
         with self.assertRaises(IndexError):
             pag_list[:-1]
+
+    def test_pagination_no_header(self, m):
+        # Test for results with pagination in the response object instead of 
+        # headers.
+        # https://github.com/ucfopen/canvasapi/discussions/605
+
+        register_uris({"paginated_list": ["no_header_4_2_pages_p1", "no_header_4_2_pages_p2"]}, m)
+        pag_list = PaginatedList(LiveAssessment, self.requester, "GET", "no_header_four_objects_two_pages", _root='assessments')
+
+        self.assertIsInstance(pag_list, PaginatedList)
+        self.assertEqual(len(list(pag_list)), 4)
+        self.assertIsInstance(pag_list[0], LiveAssessment)

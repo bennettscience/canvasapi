@@ -114,5 +114,45 @@
 			}
 		],
 		"status_code": 200
+	},
+	"no_header_4_2_pages_p1": {
+		"method": "ANY",
+		"endpoint": "no_header_four_objects_two_pages",
+		"data": {
+			"assessments": [
+				{
+					"id": "1",
+					"key": "2023-04-20_outcome_1"
+				},
+				{
+					"id": "2",
+					"key": "2023-04-18_outcome_1"
+				}
+			],
+			"meta": {
+				"pagination": {
+					"next": "https://example.com/api/v1/no_header_four_objects_two_pages?page=2"
+				}
+			}
+		}
+	},
+	"no_header_4_2_pages_p2": {
+		"method": "ANY",
+		"endpoint": "no_header_four_objects_two_pages?page=2",
+		"data": {
+			"assessments": [
+				{
+					"id": "3",
+					"key": "2023-04-17_outcome_1"
+				},
+				{
+					"id": "4",
+					"key": "2023-04-16_outcome_1"
+				}
+			],
+			"meta": {
+				"pagination": {}
+			}
+		}
 	}
 }

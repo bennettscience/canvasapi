@@ -27,7 +27,6 @@ class PaginatedList(object):
         _root=None,
         **kwargs
     ):
-
         self._elements = list()
 
         self._requester = requester
@@ -58,8 +57,22 @@ class PaginatedList(object):
         )
         data = response.json()
         self._next_url = None
+        # Check the response headers first. This is the normal Canvas convention
+        # for pagination, but there are edge case endpoints which return a `meta`
+        # property for pagination.
+        # See https://github.com/ucfopen/canvasapi/discussions/605
+        if response.links.get("next"):
+            next_link = response.links.get("next")
+        elif data.get("meta").get("pagination").get("next"):
+            # requests parses Link headers into a dict, this simply
+            # mirrors that structure so the regex searches will work.
+            next_link = {
+                "url": data.get("meta").get("pagination").get("next"),
+                "rel": "next"
+            }
+        else:
+            next_link = None
 
-        next_link = response.links.get("next")
         regex = r"{}(.*)".format(re.escape(self._requester.base_url))
 
         self._next_url = (
