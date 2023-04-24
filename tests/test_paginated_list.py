@@ -6,7 +6,7 @@ from canvasapi import Canvas
 from canvasapi.enrollment_term import EnrollmentTerm
 from canvasapi.paginated_list import PaginatedList
 from canvasapi.live_assessment import LiveAssessment
-from canvasapi.user import UserDisplay
+from canvasapi.user import User
 from tests import settings
 from tests.util import register_uris
 
