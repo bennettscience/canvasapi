@@ -1,6 +1,5 @@
 from canvasapi.canvas_object import CanvasObject
 from canvasapi.exceptions import CanvasException
-<<<<<<< HEAD
 from canvasapi.paginated_list import PaginatedList
 
 class LiveAssessment(CanvasObject):
@@ -45,7 +44,3 @@ class LiveAssessment(CanvasObject):
 class LiveAssessmentResult(CanvasObject):
     def __str__(self):
         return "{} ({})".format(self.id, self.passed)
-
-class LiveAssessment(CanvasObject):
-    def __str__(self):
-        return "{} ({})".format(self.title, self.id)
