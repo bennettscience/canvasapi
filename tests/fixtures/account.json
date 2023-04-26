@@ -401,9 +401,6 @@
 				}
 			]
 		},
-		"headers": {
-			"Link": "<https://example.com/api/v1/four_objects_two_pages?page=2&per_page=2>; rel=\"next\""
-		},
 		"status_code": 200
 	},
 	"get_notification": {
