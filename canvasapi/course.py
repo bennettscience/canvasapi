@@ -459,7 +459,10 @@ class Course(CanvasObject):
             _kwargs=combine_kwargs(assessment=assessments_list),
         )
 
-        return LiveAssessment(self._requester, response.json()["assessments"][0])
+        response_live_assessment = response.json()["assessments"][0]
+        response_live_assessment.update({"course_id": self.id})
+
+        return LiveAssessment(self._requester, response_live_assessment)
 
     def create_module(self, module, **kwargs):
         """
@@ -1656,12 +1659,15 @@ class Course(CanvasObject):
 
         :rtype: dict
         """
-        response = self._requester.request(
+        return PaginatedList(
+            LiveAssessment,
+            self._requester,
             "GET",
             "courses/{}/live_assessments".format(self.id),
-            _kwargs=combine_kwargs(**kwargs),
+            {"course_id": self.id},
+            _root="assessments",
+            _kwargs=combine_kwargs(**kwargs)
         )
-        return response.json()
 
     def get_migration_systems(self, **kwargs):
         """
