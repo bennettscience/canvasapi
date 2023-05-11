@@ -1803,8 +1803,8 @@ class TestCourse(unittest.TestCase):
         register_uris({"course": ["get_live_assessments"]}, m)
 
         response = self.course.get_live_assessments()
-        self.assertIsInstance(response, dict)
-        self.assertTrue("assessments" in response)
+        self.assertIsInstance(response, PaginatedList)
+        self.assertIsInstance(response[0], LiveAssessment)
 
 
 @requests_mock.Mocker()
